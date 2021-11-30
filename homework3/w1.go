@@ -26,18 +26,16 @@ func main() {
 
 	switch operat {
 	case "+":
-		if a+b == math.Trunc(a+b) {
-			fmt.Println(a + b)
-		} else {
-			fmt.Printf("%.2f \n", a+b)
-		}
-	case "_":
+		fmt.Println(a + b)
+
+	case "-":
 		if a-b == math.Trunc(a-b) {
 			fmt.Println(a - b)
 		} else {
 			fmt.Printf("%.2f \n", a-b)
 		}
 	case "*":
+		fmt.Printf("%.3g", a*b)
 		if a*b == math.Trunc(a*b) {
 			fmt.Println(a * b)
 		} else {
@@ -65,6 +63,9 @@ func main() {
 			fmt.Printf("%.2f \n", c)
 		}
 	case "!":
+		if a < 0 {
+			a = -a
+		}
 		var d = uint(a)
 		fmt.Println(factorial(d))
 	default:
