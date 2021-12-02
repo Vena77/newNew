@@ -15,16 +15,12 @@ func main() {
 		}
 		x = append(x, a)
 	}
-	//x := [10]int{3, 6, 9, 67, 0, 1, 4, 6, 8, 9}
 	for i := 1; i < len(x); i++ {
-		y := x[i]
-		ind := i
+
 		for j := i - 1; j > -1; j-- {
-			if x[j] > y {
-				x[j+1] = x[j]
-				ind = j
+			if x[j+1] < x[j] {
+				x[j+1], x[j] = x[j], x[j+1]
 			}
-			x[ind] = y
 		}
 	}
 	fmt.Println(x)
