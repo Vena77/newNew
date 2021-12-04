@@ -6,11 +6,10 @@ import (
 )
 
 func main() {
-	const pi float64 = 3.1415
 	var s float64
 	fmt.Print("Введите площадь круга: ")
 	fmt.Scan(&s)
-	var d = math.Sqrt(s / pi)
+	var d = 2 * math.Sqrt(s/math.Pi)
 	fmt.Println("d =", d)
-	fmt.Println("L =", pi*d)
+	fmt.Println("L =", math.Pi*d)
 }
