@@ -7,26 +7,57 @@ type Point struct {
 	p *Point
 }
 
+var head, next, cur *Point
+
+func (n *Point) Reverse() *Point {
+	var cur = n
+	var prev *Point
+	for cur != nil {
+		next := cur.p
+		cur.p = prev
+		prev = cur
+		cur = next
+	}
+	return prev
+}
+
+func (n *Point) Print() {
+	var cur = n
+	for cur != nil {
+		fmt.Println(cur)
+		cur = cur.p
+	}
+}
+
 func main() {
-	var vv = Point{}
-	y := make([]Point, 0, 5)
-	fmt.Println(len(y))
+	var a int
 	fmt.Println("Введите целые числа, для выхода нажмите exit: ")
+	i := 0
 	for {
-		_, err := fmt.Scanln(&vv.x)
+		_, err := fmt.Scanln(&a)
 		if err != nil {
 			break
 		}
-		y = append(y, vv)
-		if len(y) > 1 {
-			y[len(y)-2].p = &y[len(y)-1]
+		if i == 0 {
+			head = &Point{x: a, p: nil}
+		} else if i == 1 {
+			cur = &Point{x: a, p: nil}
+			head.p = cur
+		} else {
+			next = cur
+			cur = &Point{x: a, p: nil}
+			next.p = cur
 		}
+		i++
 	}
-	fmt.Println(y)
-
-	for i, j := 0, len(y)-1; i < j; i, j = i+1, j-1 {
-		y[i].x, y[j].x = y[j].x, y[i].x
+	next = head
+	for {
+		if next != nil {
+			fmt.Println(next)
+			next = next.p
+			continue
+		}
+		break
 	}
-	fmt.Println(y)
-
+	head.Reverse().Print() //разворот списка
 }
